@@ -1,0 +1,121 @@
+﻿@model Task2.Models2.Table_2
+@{
+    ViewBag.Title = "Makepayment";
+}
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Makepayment</title>
+</head>
+<body >
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+
+    <div>
+        <div class="container" style="background-color:lightgray; width:800px;">
+
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+
+
+                <div class="form-horizontal">
+                    <h4 class="center-block">Transfer</h4>
+
+                    <hr />
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                    <label class="field-validatio-error center-block">
+                        @ViewBag.Amount  @Html.DisplayFor(model => model.ErrorMessage)
+
+
+                    </label>
+                    <div class="form-group">
+                        <div class="">
+                            <label class="control-label col-md-2">
+                                Bank Name
+                            </label>
+                        </div>
+                        <div class="col-md-10" style="font-weight:600">
+                            GT Bank
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label class="control-label col-md-2">
+                            Acount
+                            @Html.ValidationMessageFor(model => model.Account, "", new { @class = "text-danger" })
+                        </label>
+
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Account, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <div class="form-group">
+
+                        <label class="control-label col-md-2">
+                            Amount
+                            @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+                        </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label class="control-label col-md-2">
+                            Transfer to
+
+                            @Html.ValidationMessageFor(model => model.Transferto, "", new { @class = "text-danger" })
+                        </label>
+                        <div class="col-md-10">
+                            <div class="radio-inline">
+                                @Html.RadioButtonFor(model => model.Transferto, "Same Bank", new { @name = "Tranferto" })
+                                Same Bank
+                            </div>
+                            <div class="radio-inline">
+                                @Html.RadioButtonFor(model => model.Transferto, "Other Bank", new { @name = "Tranferto" })
+                                Other Bank
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Transferto, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Transfer" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+
+
+        </div>
+    </div>
+
+
+
+</body>
+</html>
