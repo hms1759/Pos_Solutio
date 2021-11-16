@@ -12,7 +12,7 @@ namespace Task2.Models2
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Table_1
     {
         public int Id { get; set; }

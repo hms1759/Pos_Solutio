@@ -38,7 +38,7 @@ namespace paygateway.Controllers
             }
             else
             {
-               
+              
 
                     // TODO: Formtion of an instance of Data base
                     using (parkwayDbEntities db = new parkwayDbEntities())
@@ -47,7 +47,7 @@ namespace paygateway.Controllers
                         // TODO: Verification of the sender Acount number
                         var senders = db.Table_1.OrderByDescending(o => o.Id).ToList();
                     
-                           var sender = senders.FirstOrDefault(x => x.Account == paygateway.Account);
+                    var sender = senders.FirstOrDefault(x => x.Account == paygateway.Account);
                         
 
 
@@ -196,12 +196,12 @@ namespace paygateway.Controllers
                         }
                         else 
                         {
-                        paygateway.ErrorMessage = "Account not found";
+                            paygateway.ErrorMessage = "Account not found";
 
                         // TODO: Return back for Currection
                         return View("Makepayment", paygateway);
                     }
-                    
+
                         // TODO: Return back for Currection
                         paygateway.ErrorMessage = "Ooooop Error Occure";
 
@@ -213,6 +213,6 @@ namespace paygateway.Controllers
 
 
     }
-    }
+}
 }
 
